@@ -8,6 +8,10 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        name = 'Spigot'
+        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
 }
 
 sourceSets.main.java.srcDirs = ['src/main/kotlin']
@@ -15,9 +19,11 @@ sourceSets.main.java.srcDirs = ['src/main/kotlin']
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation 'com.github.hazae41:mc-kutils:3.3.2'
+    implementation 'org.spigotmc:spigot-api:1.14.4-R0.1-SNAPSHOT'
 }
 
 shadowJar {
+    relocate 'kotlin', 'com.viniciusportela.minecraftplugin.lib.kotlin'
     dependencies {
         include(dependency {
             it.moduleGroup == 'org.jetbrains.kotlin'
